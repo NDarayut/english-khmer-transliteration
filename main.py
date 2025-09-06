@@ -11,7 +11,7 @@ def main():
     while True:
         eng_text = input("Transliterate> ")
         if eng_text.strip().lower() == 'exit':
-            print("\nGoodbye!")
+            print("\nExiting...!")
             break
         khm_text = inference.transliterate_with_dict(eng_input=eng_text)
         print("Transliterated Text: \033[92m{}\033[0m\n".format(khm_text[0] if khm_text else ""))
