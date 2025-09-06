@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khmer Transliteration</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #2563eb;
+        --primary-light: #dbeafe;
+        --primary-dark: #1e40af;
+        --text: #1f2937;
+        --text-light: #6b7280;
+        --background: #f9fafb;
+        --card: #ffffff;
+        --border: #e5e7eb;
+        --highlight: #3b82f6;
+        --radius: 12px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: var(--background);
+        color: var(--text);
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 1rem;
+        min-height: 100vh;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 2.5rem;
+        color: var(--primary-dark);
+        text-align: center;
+        letter-spacing: -0.025em;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: 100%;
+        max-width: 1200px;
+    }
+
+    @media (min-width: 768px) {
+        .container {
+            flex-direction: row;
+        }
+    }
+
+    .input-panel {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #input-box {
+        font-family: 'Inter', sans-serif;
+        font-size: 1.125rem;
+        padding: 1.5rem;
+        width: 100%;
+        min-height: 220px;
+        border: 2px solid var(--border);
+        border-radius: var(--radius);
+        outline: none;
+        resize: vertical;
+        background: var(--card);
+        transition: all 0.2s ease;
+        box-shadow: var(--shadow);
+        line-height: 1.6;
+    }
+
+    #input-box:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px var(--primary-light);
+    }
+
+    #input-box::placeholder {
+        color: var(--text-light);
+    }
+
+    #suggestions {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        width: 100%;
+        transition: all 0.2s ease;
+    }
+
+    .suggestion {
+        padding: 0.75rem 1.25rem;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        border-radius: var(--radius);
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: all 0.15s ease;
+        border: 1px solid transparent;
+    }
+
+    .suggestion:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+    }
+
+    .suggestion.highlighted {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+    }
+
+    .rules-panel {
+        flex: 1;
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 2rem;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .rules-panel h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        color: var(--primary-dark);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .rules-panel h2::before {
+        content: "";
+        font-size: 1.25rem;
+    }
+
+    .rules-panel ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .rules-panel li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+    }
+
+    .rules-panel li::before {
+        content: "•";
+        color: var(--primary);
+        font-weight: bold;
+        position: absolute;
+        left: 0.5rem;
+    }
+
+    .rules-panel strong {
+        color: var(--primary-dark);
+        font-weight: 600;
+        background: var(--primary-light);
+        padding: 0.125rem 0.5rem;
+        border-radius: 4px;
+    }
+
+    .key-shortcut {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+        font-weight: 600;
+        min-width: 2rem;
+        height: 1.75rem;
+    }
+</style>
+</head>
+<body>
+
+<h1>English-Khmer Transliteration</h1>
+
+<div class="container">
+    <div class="input-panel">
+        <textarea id="input-box" placeholder="Start typing in English..."></textarea>
+        <div id="suggestions"></div>
+    </div>
+
+    <div class="rules-panel">
+        <h2>How to Use</h2>
+        <ul>
+            <li>Type English text in the input box</li>
+            <li>Suggestions will appear in Khmer below as you type</li>
+            <li><span class="key-shortcut">Tab</span>: Move to the next suggestion</li>
+            <li><span class="key-shortcut">Space</span>: Accept the highlighted suggestion</li>
+            <li>Accepted words will be added continuously without spaces</li>
+            <li>The suggestions update with every keystroke</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+const inputBox = document.getElementById('input-box');
+const suggestionsDiv = document.getElementById('suggestions');
+let candidates = [];
+let highlightedIndex = 0;
+
+function getTextParts() {
+    const text = inputBox.value;
+    const match = text.match(/^(.*?)(\b\w*)$/s);
+    if (match) return { prefix: match[1], current: match[2] };
+    return { prefix: '', current: text };
+}
+
+function replaceCurrentWord(newWord) {
+    const { prefix } = getTextParts();
+    inputBox.value = prefix + newWord; // continuous Khmer text
+}
+
+function getCurrentWord() {
+    const { current } = getTextParts();
+    return current;
+}
+
+async function fetchCandidates(word) {
+    const res = await fetch('/transliterate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word })
+    });
+    const data = await res.json();
+    candidates = data.candidates;
+    highlightedIndex = 0;
+    renderSuggestions();
+}
+
+function renderSuggestions() {
+    suggestionsDiv.innerHTML = '';
+    if (!candidates.length) return;
+    candidates.forEach((cand, idx) => {
+        const span = document.createElement('span');
+        span.textContent = cand;
+        span.className = 'suggestion';
+        if (idx === highlightedIndex) span.classList.add('highlighted');
+        span.addEventListener('click', () => acceptCandidate(idx));
+        suggestionsDiv.appendChild(span);
+    });
+}
+
+function acceptCandidate(idx) {
+    const word = candidates[idx];
+    replaceCurrentWord(word);
+    candidates = [];
+    suggestionsDiv.innerHTML = '';
+    inputBox.focus();
+}
+
+inputBox.addEventListener('input', () => {
+    const word = getCurrentWord().trim();
+    if (word) fetchCandidates(word);
+    else {
+        candidates = [];
+        suggestionsDiv.innerHTML = '';
+    }
+});
+
+inputBox.addEventListener('keydown', (e) => {
+    if (!candidates.length) return;
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        highlightedIndex = (highlightedIndex + 1) % candidates.length;
+        renderSuggestions();
+    } else if (e.key === ' ') {
+        e.preventDefault();
+        acceptCandidate(highlightedIndex);
+    }
+});
+</script>
+
+</body>
+</html>
