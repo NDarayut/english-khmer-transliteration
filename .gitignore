@@ -119,3 +119,9 @@ ENV/
 env.bak/
 venv.bak/
 myenv/
+
+doc/
+
+English-Khmer-Transliteration.zip
+
+English-Khmer-Transliteration/
