@@ -55,8 +55,8 @@ At the final epoch (Epoch 50/50), the training process reported the following st
 
 ## Installation
 ```bash
-git clone https://github.com/NDarayut/khmer-english-transliteration.git
-cd khmer-english-transliteration
+git clone https://github.com/NDarayut/english-khmer-transliteration.git
+cd english-khmer-transliteration
 pip install -r requirements.txt
 ```
 
