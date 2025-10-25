@@ -99,11 +99,7 @@ http://127.0.0.1:5000/
 
 
 ## Demo  
-<video width="640" height="360" controls>
-  <source src="./assets/video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
+![Web Application](./assets/video.gif)
 
 ## Citation
 > Chhunneng. (2023). *Khmer Text Transliteration Dataset*. GitHub repository.  
