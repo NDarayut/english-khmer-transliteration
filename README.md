@@ -69,9 +69,9 @@ Each input token is first mapped into a continuous vector space through an embed
 
 The decoder consists of a GRU layer that processes the output sequence one Khmer character at a time. At each decoding step, it receives the previously predicted token and the projected hidden state from the encoder. The attention mechanism then combines the encoder’s output representations with the decoder’s current hidden state to generate a context vector, which helps the model focus on the most relevant parts of the input sequence. This context vector is concatenated with the decoder’s GRU output and passed through a dense softmax layer to produce the final character prediction.
 
-**Embedding Dimension:** 32  
-**GRU Units:** 64  
-**Attention Mechanism:** Additive Attention  
+- **Embedding Dimension:** 32  
+- **GRU Units:** 64  
+- **Attention Mechanism:** Additive Attention  
 
 ## Training Configuration
 - **Batch Size:** 64  
