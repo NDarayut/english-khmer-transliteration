@@ -116,10 +116,11 @@ $$Top - k = \frac{1}{M} \sum_{i=1}^{M} (y_i \in \{\hat{y}_{i,1}, \hat{y}_{i,2}, 
 <figure>
  <img src="./assets/top_k.png" alt="Trade-off analysis chart">
     <figcaption>
-        <strong>Figure 4 | Analytical trade-off between transliteration accuracy and computational overhead.</strong> (a) Search space benefit analysis illustrating the gap between primary prediction (Top-1) and system recall (Top-K). The shaded region represents the additive benefit of beam search; at the recommended k=5 setting, the system provides a 9.81 percentage-point (pp) recall gain over the top-1 prediction. (b) The computational efficiency frontier, highlighting the relationship between accuracy gains and inference latency. The gray bars represent the absolute magnitude of computational overhead, while the red dotted line tracks the linear latency trajectory across different beam widths. The optimal operating point is k=5, which achieves a 29.16% absolute accuracy increase over greedy decoding while remaining under the 100ms real-time latency threshold; beyond this point, the system exhibits diminishing returns as latency exceeds the limits of user interaction.</strong>
+        <strong>Figure 4 | Analytical trade-off between transliteration accuracy and computational overhead.</strong> (a) Search space benefit analysis illustrating the gap between primary prediction (Top-1) and system recall (Top-K). The shaded region represents the additive benefit of beam search; at the recommended k=5 setting, the system provides a 9.81 percentage-point (pp) recall gain over the top-1 prediction. (b) The computational efficiency frontier, highlighting the relationship between accuracy gains and inference latency. The gray bars represent the absolute magnitude of computational overhead, while the red dotted line tracks the linear latency trajectory across different beam widths. The optimal operating point is k=5, which achieves a 29.16% absolute accuracy increase over greedy decoding while remaining under the 100ms real-time latency threshold; beyond this point, the system exhibits diminishing returns as latency exceeds the limits of user interaction.
     </figcaption>
 </figure>  
 
+<br>
 </br>
 
 Table 1 | Model comparison on the validation set using Character Error Rates (CER %). Lower CER indicates better performance. The Lowest CER is **bold** and the second lowest is *italicize*.
