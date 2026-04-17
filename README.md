@@ -87,7 +87,7 @@ To maximize accuracy without adding model bloat, our post-processing pipeline en
 <figure>
  <img src="./assets/full_pipeline.png" alt="Post-processing pipeline">
     <figcaption>
-        <strong>Figure 3 | End-to-End inference pipeline with post-processing technique. The input flow through the encoder-decoder model to generate 3 prediction using beam search (k=3). Following the beam search output, a lexical validation layer cross-referencing the outputs with Khmer Dictionary. The pipeline uses Levenshtein distance to recover the closest orthographically valid entries, resulting in the finals words being all valid.</strong>
+        <strong>Figure 3 | End-to-End inference pipeline with post-processing technique.</strong> The input flow through the encoder-decoder model to generate 3 prediction using beam search (k=3). Following the beam search output, a lexical validation layer cross-referencing the outputs with Khmer Dictionary. The pipeline uses Levenshtein distance to recover the closest orthographically valid entries, resulting in the finals words being all valid.
     </figcaption>
 </figure>
 
