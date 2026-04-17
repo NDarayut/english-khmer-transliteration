@@ -4,9 +4,9 @@
 <hr>
 
 <p align="center">
-    <a href="https://github.com/NDarayut/english-khmer-transliteration/blob/main/paper/technical%20report.pdf"><b>Paper</b></a> |
-    <a href="https://github.com/NDarayut/english-khmer-transliteration/blob/main/eng_khm_data.txt"><b>Dataset Download</b></a> |
-    <a href="https://github.com/NDarayut/english-khmer-transliteration/tree/main/BiGRU-Attention"><b>Model Download</b></a> |
+    <a href="./paper/technical report.pdf"><b>Paper</b></a> |
+    <a href="eng_khm_data.txt"><b>Dataset Download</b></a> |
+    <a href="./BiGRU-Attention/"><b>Model Download</b></a> |
 </p>
 
 
